@@ -19,7 +19,7 @@ export const createSubjectSchema = z.object({
 export const updateSubjectSchema = createSubjectSchema.partial();
 
 export const assignSubjectSchema = z.object({
-    subject_id: z.string().uuid('Invalid subject ID'),
+    subject_id: z.string().uuid(),
     is_compulsory: z.boolean().optional().default(true),
 });
 
@@ -44,7 +44,7 @@ const termObject = z.object({
     order: z.number().int().min(1, 'Order must be at least 1'),
     start_date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Invalid start date format (YYYY-MM-DD)'),
     end_date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Invalid end date format (YYYY-MM-DD)'),
-    session_id: z.string().uuid('Session ID is required'),
+    session_id: z.string().uuid(),
     is_active: z.boolean().optional().default(false),
     status: z.enum(['draft', 'active', 'closed']).optional().default('draft'),
 });
