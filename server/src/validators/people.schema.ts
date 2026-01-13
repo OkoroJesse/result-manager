@@ -4,7 +4,7 @@ export const createStudentSchema = z.object({
     first_name: z.string().min(1, 'First name is required'),
     last_name: z.string().min(1, 'Last name is required'),
     admission_number: z.string().min(1, 'Admission number is required'),
-    class_id: z.string().uuid('Invalid class selection'),
+    class_id: z.string().uuid(),
     gender: z.enum(['male', 'female']).optional(),
     dob: z.string().optional(),
     status: z.enum(['active', 'graduated', 'withdrawn']).default('active'),
