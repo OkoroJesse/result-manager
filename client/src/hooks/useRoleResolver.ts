@@ -1,5 +1,4 @@
 import { useState, useCallback } from 'react';
-import { supabase } from '../lib/supabase';
 import api from '../services/api';
 
 export interface UserProfile {
@@ -16,7 +15,7 @@ export function useRoleResolver() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const resolveRole = useCallback(async (userId: string): Promise<UserProfile | null> => {
+    const resolveRole = useCallback(async (_userId: string): Promise<UserProfile | null> => {
         setLoading(true);
         setError(null);
 
@@ -41,7 +40,7 @@ export function useRoleResolver() {
                 email: data.user.email,
                 firstName: data.user.user_metadata?.first_name, // Try metadata fallback
                 lastName: data.user.user_metadata?.last_name,
-                profilePictureUrl: null // Profile picture logic can be added later if needed
+                profilePictureUrl: undefined // Profile picture logic can be added later if needed
             };
 
         } catch (err: any) {
