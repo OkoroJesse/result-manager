@@ -1,0 +1,10 @@
+START DEBUG
+Checking table existence...
+Table Exists. Rows found: 0
+Trying Insert...
+Insert Error: {
+  "code": "PGRST204",
+  "details": null,
+  "hint": null,
+  "message": "Could not find the 'email' column of 'teachers' in the schema cache"
+}
