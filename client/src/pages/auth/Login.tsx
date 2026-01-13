@@ -45,14 +45,67 @@ export default function Login() {
     };
 
     return (
-        <div className="h-screen w-screen overflow-hidden grid lg:grid-cols-2 bg-slate-50/50">
-            {/* Left: Login Form */}
-            <div className="flex items-center justify-center p-6 bg-slate-50/50 h-full">
-                <Card className="w-full max-w-[360px] shadow-2xl border-none bg-white rounded-3xl p-6">
-                    <CardContent className="space-y-6 pt-2">
+        <div className="h-screen w-screen overflow-hidden flex flex-col lg:grid lg:grid-cols-2 bg-slate-50/50">
+            {/* Right: Branding (Top on Mobile) */}
+            <div className="order-1 lg:order-2 flex flex-col items-center justify-center relative bg-white py-8 px-6 lg:p-8 h-auto lg:h-full border-b border-slate-100 lg:border-none shadow-sm lg:shadow-none z-10">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-50/50 via-white to-white z-0" />
+
+                <div className="z-10 w-full max-w-sm text-center space-y-4 lg:space-y-6">
+                    {/* Logo Section */}
+                    <div className="flex items-center justify-center gap-2 lg:mb-4">
+                        <div className="h-8 w-8 lg:h-10 lg:w-10 bg-[#0284c7] rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/30 transform -rotate-3">
+                            <GraduationCap className="h-5 w-5 lg:h-6 lg:w-6 text-white" />
+                        </div>
+                        <h1 className="text-xl lg:text-2xl font-black text-slate-900 italic tracking-tight">
+                            Bright Smile Academy
+                        </h1>
+                    </div>
+
+                    <div className="space-y-2 lg:space-y-3">
+                        <h2 className="hidden lg:block text-3xl font-black text-slate-900 leading-tight">
+                            Precision in <br />
+                            <span className="text-[#0284c7] italic">Academic Records</span>
+                        </h2>
+                        <p className="text-slate-500 font-medium text-[10px] lg:text-sm leading-relaxed max-w-xs mx-auto">
+                            The intelligent school management portal.
+                        </p>
+                    </div>
+
+                    {/* Features & Illustration - Desktop Only */}
+                    <div className="hidden lg:block space-y-6">
+                        <div className="space-y-2 pt-1">
+                            {[
+                                'Real-time Result Compilation',
+                                'Automated Report Generation',
+                                'Official Academic Registry'
+                            ].map((feature, i) => (
+                                <div key={i} className="flex items-center justify-center gap-2">
+                                    <CheckCircle2 className="h-4 w-4 text-green-500 fill-green-500/10" />
+                                    <span className="text-xs font-bold text-slate-600">{feature}</span>
+                                </div>
+                            ))}
+                        </div>
+                        <div className="relative mt-8 w-full flex justify-center">
+                            <div className="relative z-10 p-3 bg-white rounded-xl shadow-xl shadow-slate-200/50 transform rotate-1 hover:rotate-0 transition-transform duration-500">
+                                <img
+                                    src="/login_students.png"
+                                    alt="Students on Pencil"
+                                    className="w-72 h-auto object-cover rounded-lg"
+                                />
+                            </div>
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-blue-100/50 rounded-full blur-3xl -z-10" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Left: Login Form (Bottom on Mobile) */}
+            <div className="order-2 lg:order-1 flex-1 flex items-center justify-center p-4 bg-slate-50/50 lg:h-full overflow-hidden">
+                <Card className="w-full max-w-[320px] sm:max-w-[360px] shadow-xl border-none bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 scale-90 sm:scale-100 origin-center">
+                    <CardContent className="space-y-5 sm:space-y-6 pt-2">
                         <div className="text-center space-y-1">
-                            <h2 className="text-2xl font-black text-slate-800">Welcome Back</h2>
-                            <p className="text-slate-500 font-medium text-xs">Please enter your credentials.</p>
+                            <h2 className="text-xl sm:text-2xl font-black text-slate-800">Welcome Back</h2>
+                            <p className="text-slate-500 font-medium text-[10px] sm:text-xs">Please enter your credentials.</p>
                         </div>
 
                         {error && (
@@ -126,60 +179,6 @@ export default function Login() {
                         </div>
                     </CardContent>
                 </Card>
-            </div>
-
-            {/* Right: Branding */}
-            <div className="hidden lg:flex flex-col items-center justify-center relative bg-white p-8 h-full">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-50/50 via-white to-white z-0" />
-
-                <div className="z-10 max-w-sm text-center space-y-6">
-                    {/* Logo Section */}
-                    <div className="flex items-center justify-center gap-2 mb-4">
-                        <div className="h-10 w-10 bg-[#0284c7] rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/30 transform -rotate-3">
-                            <GraduationCap className="h-6 w-6 text-white" />
-                        </div>
-                        <h1 className="text-2xl font-black text-slate-900 italic tracking-tight">
-                            Bright Smile Academy
-                        </h1>
-                    </div>
-
-                    <div className="space-y-3">
-                        <h2 className="text-3xl font-black text-slate-900 leading-tight">
-                            Precision in <br />
-                            <span className="text-[#0284c7] italic">Academic Records</span>
-                        </h2>
-                        <p className="text-slate-500 font-medium text-sm leading-relaxed max-w-xs mx-auto">
-                            The intelligent school management portal for teachers, students, and administrators. Seamlessly track performance.
-                        </p>
-                    </div>
-
-                    {/* Features List */}
-                    <div className="space-y-2 pt-1">
-                        {[
-                            'Real-time Result Compilation',
-                            'Automated Report Generation',
-                            'Official Academic Registry'
-                        ].map((feature, i) => (
-                            <div key={i} className="flex items-center justify-center gap-2">
-                                <CheckCircle2 className="h-4 w-4 text-green-500 fill-green-500/10" />
-                                <span className="text-xs font-bold text-slate-600">{feature}</span>
-                            </div>
-                        ))}
-                    </div>
-
-                    {/* Illustration Container */}
-                    <div className="relative mt-8 w-full flex justify-center">
-                        <div className="relative z-10 p-3 bg-white rounded-xl shadow-xl shadow-slate-200/50 transform rotate-1 hover:rotate-0 transition-transform duration-500">
-                            <img
-                                src="/login_students.png"
-                                alt="Students on Pencil"
-                                className="w-72 h-auto object-cover rounded-lg"
-                            />
-                        </div>
-                        {/* Decorative Blob */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-blue-100/50 rounded-full blur-3xl -z-10" />
-                    </div>
-                </div>
             </div>
         </div>
     );
